@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-const sortOptions = ['Popularity', 'Price', 'Alphabet'];
+const sortOptions = ['rating', 'price', 'title'];
 
-function Sort() {
+function Sort({ sortType, setSortType }) {
   const [open, setOpen] = useState(false);
-  const [selectedSortOptionIndex, setSelectedSortOptionIndex] = useState(0);
   return (
     <div className="sort">
       <div className="sort__label">
@@ -19,7 +18,7 @@ function Sort() {
             fill="#2C2C2C"></path>
         </svg>
         <b>Sort by:</b>
-        <span onClick={() => setOpen((open) => !open)}>{sortOptions[selectedSortOptionIndex]}</span>
+        <span onClick={() => setOpen((open) => !open)}>{sortType}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -27,9 +26,9 @@ function Sort() {
             {sortOptions.map((sortOption, sortOptionIndex) => (
               <li
                 key={sortOptionIndex}
-                className={selectedSortOptionIndex === sortOptionIndex ? 'active' : ''}
+                className={sortType === sortOption ? 'active' : ''}
                 onClick={() => {
-                  setSelectedSortOptionIndex(sortOptionIndex);
+                  setSortType(sortOption);
                   setOpen(false);
                 }}>
                 {sortOption}

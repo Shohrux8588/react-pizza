@@ -1,6 +1,6 @@
 import React from 'react';
 
-const categories = ['All', 'Mexican', 'Vegetarian', 'Spicy'];
+const categories = ['All', 'Mexican', 'Vegetarian', 'Spicy', 'Pepperoni', 'Grilled'];
 
 function Categories({ categoryId, setCategoryId }) {
   return (
